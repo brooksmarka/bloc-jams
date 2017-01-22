@@ -28,6 +28,21 @@ var albumMarconi = {
      ]
  };
  
+var albumBeer = {
+     title: 'Stout Month',
+     artist: 'Vine Street Pub',
+     label: 'Boulder Records',
+     year: '1992',
+     albumArtUrl: 'assets/images/album_covers/19.png',
+     songs: [
+         { title: 'XXX Stouts', duration: '4:31' },
+         { title: 'MindBender', duration: '1:21' },
+         { title: 'Majaraja', duration: '7:37'},
+         { title: 'Tweak', duration: '3:24' },
+         { title: 'Mountain Standard', duration: '4:03'}
+     ]
+ };
+ 
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -62,7 +77,20 @@ var createSongRow = function(songNumber, songName, songLength) {
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
      }
  };
+
+ var cycleArray = function(album) {
+     if(album === albumPicasso){
+         setCurrentAlbum(albumMarconi);
+     }
+     else if (album === albumMarconi){
+         setCurrentAlbum(albumBeer);
+     }else{
+         setCurrentAlbum(albumPicasso)
+     }
+ };
  
  window.onload = function() {
      setCurrentAlbum(albumMarconi);
  };
+
+ window.addEventListener = ('click', cycleArray(albumPicasso));
