@@ -55,13 +55,15 @@ var createSongRow = function(songNumber, songName, songLength) {
      return template;
  };
 
- var setCurrentAlbum = function(album) {
-     // #1
      var albumTitle = document.getElementsByClassName('album-view-title')[0];
      var albumArtist = document.getElementsByClassName('album-view-artist')[0];
      var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
+ var setCurrentAlbum = function(album) {
+     // #1
+ 
  
      // #2
      albumTitle.firstChild.nodeValue = album.title;
@@ -79,7 +81,18 @@ var createSongRow = function(songNumber, songName, songLength) {
  };
  
  window.onload = function() {
-     setCurrentAlbum(albumMarconi);
- };
+     setCurrentAlbum(albumPicasso);
 
- 
+  var albumArray = [albumPicasso, albumMarconi, albumBeer];
+     
+  var index = 1;
+  albumImage.addEventListener('click', function(event){
+    //toggle between the 3 different albums by setting the current album do this by looping through the array of albums   
+    setCurrentAlbum(albumArray[index]);
+    index++;
+    if(index == albumArray.length){
+        index = 0;
+    }      
+   });
+
+ }; 
