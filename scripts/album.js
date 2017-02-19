@@ -26,16 +26,13 @@ var clickHandler = function() {
     
     if (currentlyPlayingSongNumber !== null) {
 		// Revert to song number for currently playing song because user started playing new song.
-        getSongNumberCell(currentlyPlayingSongNumber);
-		//var currentlyPlayingCell = $('.song-item-number[data-song-number="' + currentlyPlayingSongNumber + '"]');
-		//currentlyPlayingCell.html(currentlyPlayingSongNumber);
+        var songCell = getSongNumberCell(currentlyPlayingSongNumber);
+		songCell.html(currentlyPlayingSongNumber);
 	}
 	if (currentlyPlayingSongNumber !== songNumber) {
 		// Switch from Play -> Pause button to indicate new song is playing.
 		$(this).html(pauseButtonTemplate);
         setSong(songNumber);
-		//currentlyPlayingSongNumber = songNumber;
-        //currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
         updatePlayerBarSong();
 	} else if (currentlyPlayingSongNumber === songNumber) {
 		// Switch from Pause -> Play button to pause currently playing song.
