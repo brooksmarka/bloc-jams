@@ -201,7 +201,11 @@ var togglePlayFromPlayerBar = function (){
     
     var currentSongNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
     
-    if(currentSoundFile.isPaused()){
+    if(currentSoundFile === null){
+        setSong(1);
+    }
+    
+    else if (currentSoundFile.isPaused()){
         $(currentSongNumberCell).html(pauseButtonTemplate);
         $('.main-controls .play-pause').html(playerBarPauseButton);
         currentSoundFile.play();
@@ -236,7 +240,7 @@ var $playButton = $('.main-controls .play-pause');
      setCurrentAlbum(albumPicasso);
      $previousButton.click(previousSong);
      $nextButton.click(nextSong); 
-     $playButton.click(togglePlayFromPlayerBar());  
+     $playButton.click(togglePlayFromPlayerBar);  
      
  });
 
